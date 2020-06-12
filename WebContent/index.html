@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>My Website</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <script src="js/data/formationDB.js"></script>
+    <script src="js/models/Formation.js"></script>
+    <script src="js/models/Activity.js"></script>
+    <script src="js/models/Event.js"></script>
+    <script src="js/models/Partner.js"></script>
+    <script src="js/models/Professor.js"></script>
+    <script src="js/models/Student.js"></script>
+    <script src="js/models/Job.js"></script>
+    <script src="js/models/Laureate.js"></script>
+    <script src="js/models/Subject.js"></script>
+    <script src="js/models/Semester.js"></script>
+    <script src="js/models/Actuality.js"></script>
+    <script src="js/services/FormationService.js"></script>
+    <script src="js/views/PartnerComponent.js"></script>
+    <script src="js/views/ActualityComponent.js"></script>
+    <script src="js/views/ActivityComponent.js"></script>
+    <script src="js/views/EventComponent.js"></script>
+    <script src="js/views/ProfessorComponent.js"></script>
+    <script src="js/views/StudentComponent.js"></script>
+    <script src="js/views/LaureateComponent.js"></script>
+    <script src="js/views/JobComponent.js"></script>
+    <script src="js/views/ProgramComponent.js"></script>
+    <script src="js/views/FormationComponent.js"></script>
+
+    <script src="js/main.js"></script>
+
+
+</head>
+<body onload="main();">
+
+<div class="progress" id="progress">
+    <div class="progress-container">
+        <div class="progress-bar" id="myProgressBar"></div>
+    </div>
+</div>
+
+<!-- Header -->
+<section id="header">
+    <div class="header container">
+        <div class="nav-bar">
+            <div class="brand">
+                <a href="#">
+                    <img src="imgs/mql_logo.png" alt="Accueil" id="index-span" onclick="spa.show('index')">
+                </a>
+            </div>
+            <div class="nav-list">
+                <div class="hamburger" onclick="spa.menuToggle()">
+                    <div class="bar"></div>
+                </div>
+                <ul>
+                    <li>
+                        <span onclick="spa.show('accueil')" id="accueil-span">Accueil</span>
+                    </li>
+                    <li>
+                        <span onclick="spa.show('apropos')" id="apropos-span">A propos</span>
+                    </li>
+                    <li>
+                        <span id="formation-span">Formation</span>
+                        <ul>
+                            <li>
+                                <span onclick="spa.show('formation-activites')">Activités</span>
+                            </li>
+                            <li>
+                                <span onclick="spa.show('formation-programme')">Programme</span>
+                            </li>
+                            <li>
+                                <span onclick="spa.show('formation-professeurs')">Professeurs</span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span id="etudiants-span">Espace Etudiant</span>
+                        <ul>
+                            <li>
+                                <span onclick="spa.show('etudiants-selectiones')">Selectiones</span>
+                            </li>
+                            <li>
+                                <span onclick="spa.show('etudiants-laureats')">Laureats</span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span onclick="spa.show('evenements')" id="evenements-span">Evenements</span>
+                    </li>
+                    <li>
+                        <span onclick="spa.show('partenaires')" id="partenaires-span">Partenaires</span>
+                    </li>
+                    <li>
+                        <div class="search">
+                            <input type="text" class="searchTerm" placeholder="Rechercher..."
+                                   onkeyup="search(this.value)">
+                            <button type="submit" class="searchButton">
+                                <img src="imgs/icons/search_icon_white.png" alt="s">
+                            </button>
+
+                        </div>
+                        <div class="search-res" id="search-res">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Header -->
+
+<div id="content">
+    <section id="index">
+        <div class="container">
+            <div class="outer">
+                <div class="details">
+                    <img src="imgs/home/fsdmLogo_white_withebg.png" alt="index">
+                    <h1>Master Qualité du logiciel</h1>
+                    <h3 class="dynamicText">Première passerelle d’Insertion Professionnelle en Informatique au
+                        Maroc</h3>
+                    <h2>
+                        <button onclick="spa.show('accueil')"><span>Découvrir la formation</span></button>
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <!--<div class="slider">
+
+            <div class="slide active" style="background-image: url('imgs/home/pic3.png')">
+                <div class="container">
+                    &lt;!&ndash; <img src="imgs/home/white3.JFIF " alt="" style="width: 200px; height:150px; position:absolute; top: 0px; left: 0px;">&ndash;&gt;
+
+                    <div class="caption">
+                        <img src="imgs/home/fsdmTrans.png" alt="" style="width: 310px; height:300px; position:absolute; top: 5px; right: 40%;">
+                        <div>
+                            <h1>1.Master Qualite du logiciel</h1>
+                            <p>Lorem ipsum dummy text goes here.</p>
+                            <button onclick="spa.show('accueil')">Voir plus</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('imgs/home/pic4.png')">
+            </div>
+        </div>-->
+    </section>
+
+    <section id="accueil" class="panel hidden">
+        <div id="about">
+            <div class="about container">
+                <div class="col-left grid1-home">
+                    <div class="animation1"></div>
+                    <div class="animation2"></div>
+                    <div class="animation3"></div>
+                    <!--                <div class="imgrond">-->
+                    <img src="imgs/formation/mqlLogo.jpeg" alt="img" class="imgrond">
+                    <!--                </div>-->
+                    <!--<button onclick="spa.show('error')">click me</button>-->
+                </div>
+                <div class="col-right grid2-home">
+                    <h1 class="section-title annimation-text"> Master Qualité du logiciel. </h1>
+                    <h2> <span class="txt-type dynamicText" data-wait="300" data-words='["Votre carrière est unique...",
+            "Le MQL aussi !"]'>
+            </span></h2>
+                    <p class="dynamicDesc">Le Master MQL est une véritable plateforme de formation et de production de
+                        la ressource
+                        humaine très hautement qualifiée en ingénierie du logiciel.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="apropos" class="panel hidden">
+
+    </section>
+
+    <section id="formation-activites" class="panel hidden">
+        <div id="activities">
+            <div class="activities container">
+                <div class="activities-header">
+                    <h1 class="section-title">Activités <span>du</span>Master</h1>
+                    <p>La diversité des activités de formation mène a renforcer les connaissances et le savoir-faire
+                        d’étudiants,
+                        Vu qu’elles déroulent d’une manière interactive, dont lesquelles ,il est fortement recommandés
+                        aux étudiants
+                        d’être présent, tout en étant sous la supervision des professeurs qualifiés.</p>
+                </div>
+                <div class="all-activities" id="all-activities">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="formation-programme" class="panel hidden">
+        <div id="program">
+            <div class="program container">
+                <div class="program-header">
+                    <h1 class="section-title">Notre <span>Programme</span></h1>
+                    <p> Les cours du Master Qualité Logiciel sont planifiés sur quatre semestres,
+                        Le dernier sera consacré pour un stage pré-embauche de six mois effectué dans l’une des
+                        entreprises multinationaux de secteur informatique,
+                        qui donne lieu à une soutenance d'une thèse professionnelle.
+                    </p>
+                </div>
+                <div class="all-programm" id="all-program">
+                    <div class="rond">
+                        <button class="tablink" onclick="spa.openSemester('s1', this, 'steelblue')" id="defaultOpen">
+                            Semestre 1
+                        </button>
+                        <button class="tablink" onclick="spa.openSemester('s2', this, 'steelblue')">Semestre 2</button>
+                        <button class="tablink" onclick="spa.openSemester('s3', this, 'steelblue')">Semestre 3</button>
+                        <button class="tablink" onclick="spa.openSemester('s4', this, 'steelblue')">Semestre 4</button>
+
+                        <hr>
+                        <div id="s1" class="tabcontent">
+                            <!--            <h1>Semestre 3</h1>-->
+                            <div class="grid-container" id="semester-1">
+
+                            </div>
+                        </div>
+                        <div id="s2" class="tabcontent">
+                            <!--            <h1>Semestre 3</h1>-->
+                            <div class="grid-container" id="semester-2">
+
+                            </div>
+                        </div>
+                        <div id="s3" class="tabcontent">
+                            <!--            <h1>Semestre 3</h1>-->
+                            <div class="grid-container" id="semester-3">
+
+                            </div>
+                        </div>
+                        <div id="s4" class="tabcontent">
+
+                            <div class="description" id="semester-4">
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="formation-professeurs" class="panel hidden">
+        <div id="professors">
+            <div class="professors container">
+                <div class="professors-header">
+                    <h1 class="section-title">Nos <span>Professors</span></h1>
+                    <p> Tous le succès et l'excellence qui a connu le MQL, c'est revenu aux efforts de leur équipe
+                        pédagogique contenant
+                        des professeurs qualifiés, qui ont toujours répondu présents aux questions des étudiants en
+                        transmettant leurs expériences et
+                        leur savoir-faire avec patience et passion.
+                    </p>
+                </div>
+                <div class="all-professors" id="all-professors">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="etudiants-selectiones" class="panel hidden">
+        <div id="students">
+            <div class="students container">
+                <div class="students-header">
+                    <h1 class="section-title">Les étudiants <span>sélectionnés</span></h1>
+                    <p>
+                        MQL sélectionne des licenciés en domaine d’informatique et les aide pour améliorer
+                        Leurs compétences techniques et personnelles après avoir passer le concours écrit et l'entretien
+                        orale. </p>
+                </div>
+                <div class="all-students">
+                    <div class="slider" id="all-students">
+
+                    </div>
+                </div>
+                <!-- controls  -->
+                <div class="controls">
+                    <div class="prev"><</div>
+                    <div class="next">></div>
+                </div>
+
+                <!-- indicators -->
+                <div class="indicator">
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <section id="etudiants-laureats" class="panel hidden">
+        <div id="laureates">
+            <div class="laureates container">
+                <div class="laureates">
+                    <div class="laureates-header">
+                        <h1 class="section-title">Les <span>Laureats</span></h1>
+                        <p>MQL participe très activement dans le domaine de l’offshore avec un taux d’insertion de 100%
+                            des étudiants dans des multinationales, nos lauréats généralement s’intègrent dans toutes
+                            les structures actives en développement informatique dans les deux secteurs privé et public,
+                            notant que nombreux parmi eux ont pu signer leurs contrats CDI avant même d’avoir continuer
+                            les deux ans de la formation.
+                        </p>
+                    </div>
+                </div>
+                <div class="all-laureates">
+
+                    <div id="filter-promotion">
+
+                    </div>
+
+                    <div class="slider">
+                        <div class="caption">
+                            <div class="grid-i" id="all-laureates">
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="evenements" class="panel hidden">
+        <div id="events">
+            <div class="events container">
+                <div class="events-header">
+                    <h1 class="section-title">Even<span>ements</span></h1>
+                    <p>
+                        Le MQL donne une importance spéciale aux évènements universitaires, d’ailleurs il a pu
+                        réconcilier entre
+                        le programme chargé de la formation et la participation à organiser la plupart de ces
+                        évènements,
+                        en offrant à nos étudiants la chance de découvrir des nouvelles expériences et enrichir leur
+                        esprit
+                        professionnel et sociale.
+                    </p>
+                </div>
+                <div class="all-events" id="all-events">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="partenaires" class="panel hidden">
+        <section id="partners">
+            <div class="partners container">
+                <div class="partners-header">
+                    <h1 class="section-title">partners <span>info</span></h1>
+                    <p>Grâce à notre unicité, notre crédibilité et notre diversité, nous avons réussi à créer des
+                        partenariats avec des nombreuses entreprises
+                        leaders du monde, qui ont déniché que notre formation correspondent parfaitement à leurs
+                        objectifs prévus, due à sa richesse et sa façons
+                        de réconcilier avec la progression informatique et besoin de marché de travail.
+                    </p>
+                </div>
+                <div class="all-partners" id="all-partners">
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!--Error Page-->
+    <section id="error" class="panel hidden">
+        <div class="error-page">
+            <div class="error-center">
+
+                <h1 class="error-404">
+                    <span>404</span>
+                </h1>
+
+                <h2 class="title">Page non trouvée</h2>
+                <p class="error-message">
+                    La page que vous avez demandée n'existe pas.
+                    <br/>
+                    <!--                <button onclick="spa.show('home')">Retour</button>-->
+                </p>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+
+<!-- Footer -->
+
+<section id="footer">
+    <div class="footer1">
+        <div class="footer-section" style="padding-bottom: 30px">
+            <div class="footer-contact">
+                <h1 class="h1">Contacts</h1>
+                <pre>
+Adresse :Qualité Logiciel (N. Chenfour),
+Département d’Informatique,
+Faculté des Sciences Dhar El Mahraz,
+BP : 1796 Atlas, Fès, Maroc
+                </pre>
+                <div class="local"><!--<img src="icons/phone.png" alt="">-->
+                    Téléphone: 0625545165
+                </div>
+                <div class="local"><!--<img src="template/icons/Ncrow-Mega-Pack-1-Gmail.ico" alt="">-->
+                    E-mail: noureddine.chenfour@usmba.ac.ma
+                </div>
+                <div class="footer-link">
+                    <div class="mediaLinks">
+                        <a href="https://www.facebook.com/FSDM.DharElMehraz" target="_blank"><i
+                                class=" fa fa-facebook"></i></a>
+                        <a href="https://www.youtube.com/channel/UCgWZzU3V0sY9jO6JLeHl6fw" target="_blank"><i
+                                class="fa fa-youtube"></i></a>
+                        <a href="https://www.linkedin.com/school/fsdm/" target="_blank"><i
+                                class="fa fa-linkedin"></i></a>
+                        <a href="http://www.fsdmfes.ac.ma/" target="_blank"><i class="fa fa-google"></i></a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="footer-section footer-links " style="padding-bottom: 30px">
+            <h1 class="h1"> Liens utiles </h1>
+            <div onclick="spa.show('accueil')">Accueil</div>
+            <hr>
+            <div onclick="spa.show('apropos')">A propos</div>
+            <hr>
+            <div onclick="spa.show('formation-activites')">Activites</div>
+            <hr>
+            <div onclick="spa.show('formation-programme')">Programme</div>
+            <hr>
+            <div onclick="spa.show('formation-professeurs')">Professeurs</div>
+            <hr>
+            <div onclick="spa.show('etudiants-selectiones')">Etudinats Selectiones</div>
+            <hr>
+            <div onclick="spa.show('etudiants-laureats')">Les Laureats</div>
+            <hr>
+            <div onclick="spa.show('evenements')">Evenements</div>
+            <hr>
+            <div onclick="spa.show('partenaires')">Partenaires</div>
+            <hr>
+
+        </div>
+        <div class="footer-section">
+            <!--        <h1>Localisation</h1>-->
+            <div class="footer-map">
+                <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.406530286746!2d-4.979054984468116!3d34.033441526167415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd9f8b5f7be79403%3A0x64ed183ba63abde7!2sFacult%C3%A9%20des%20Sciences%20Dhar%20El%20Mehraz!5e0!3m2!1sfr!2sma!4v1590444740389!5m2!1sfr!2sma"
+                        frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>© 2020 USMBA - FSDM - MQL</p>
+    </div>
+</section>
+
+<script src="js/TypeWriter.js"></script>
+<script src="js/Spa.js"></script>
+<script src="js/Slider.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="Rhita Es-safi et Ibtissam Bourkha - Plateform MQL">
+        <wb-resource deploy-path="/" source-path="/WebContent"/>
+        <property name="context-root" value="Rhita_Es-safi_et_Ibtissam_Bourkha_-_Plateform_MQL"/>
+    </wb-module>
+</project-modules>
